@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            color: #007bff;
+            font-weight: bold;
+            margin-top: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 5px;
+        }
+        .print-button {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+        }
+        @media print {
+            .print-button {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="print-button">
+        <button class="btn btn-primary" onclick="window.print()">Print Resume</button>
+    </div>
+
+    <div class="text-center">
+        <h2 class="fw-bold">{{ name }}</h2>
+        <p class="text-muted">Aspiring Software Developer | 2nd Year Student</p>
+        <p>{{ phone }} | {{ email }}</p>
+    </div>
+
+    <h4 class="section-title">Education</h4>
+
+    <h5>B.Tech Education</h5>
+    <p><strong>{{ university }}</strong>, {{ location }} - <em>{{ degree }}</em> ({{ duration }})</p><p>CGPA: {{ btech_cgpa }}</p>
+    
+
+    <h5>Intermediate Education</h5>
+    <p><strong>{{ intermediate_school }}</strong>, {{ intermediate_location }} - <em>{{ intermediate_degree }}</em> ({{ intermediate_duration }})</p><p>Percentage: {{ intermediate_percentage }}%</p>
+
+    <h5>School Education</h5>
+    <p><strong>{{ school }}</strong>, {{ school_location }} - <em>{{ school_degree }}</em> ({{ school_duration }})</p> <p>Percentage: {{ school_percentage }}%</p>
+
+    <h4 class="section-title">Skills</h4>
+    <p><strong>Programming Languages:</strong> {{ languages }}</p>
+    <p><strong>Web Development:</strong> {{ web_development }}</p>
+    <p><strong>Database Management:</strong> {{ databases }}</p>
+    <p><strong>Developer Tools:</strong> {{ tools }}</p>
+
+    <h4 class="section-title">Coding Profiles</h4>
+    <p><strong>LinkedIn:</strong> <a href="{{ linkedin }}">{{ linkedin }}</a></p>
+    <p><strong>Codechef:</strong> <a href="{{ codechef }}">{{ codechef }}</a></p>
+    <p><strong>LeetCode:</strong> <a href="{{ leetcode }}">{{ leetcode }}</a></p>
+    <p><strong>HackerRank:</strong> <a href="{{ hackerrank }}">{{ hackerrank }}</a></p>
+
+    <h4 class="section-title">Projects</h4>
+    {% for project in projects %}
+    <p><strong>{{ project.name }}</strong> - {{ project.description }}</p>
+    <ul>
+        {% for feature in project.features %}
+        <li>{{ feature }}</li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+
+    <h4 class="section-title">Ongoing Project</h4>
+    <p><strong>Beach Tides Calculation</strong> - A project to calculate beach tides using frontend technologies (HTML, CSS, JavaScript, and API keys). The project is ongoing.</p>
+    <ul>
+        <li>Calculates tide timings and heights for a given beach location</li>
+        <li>Fetches data from a public tide API</li>
+        <li>Responsive design to adjust to different screen sizes</li>
+    </ul>
+
+    <h4 class="section-title">Certifications</h4>
+    <ul>
+        {% for cert in certifications %}
+        <li>{{ cert }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4 class="section-title">Hobbies & Interests</h4>
+    <ul>
+        {% for hobby in hobbies %}
+        <li>{{ hobby }}</li>
+        {% endfor %}
+    </ul>
+
+</div>
+
+</body>
+</html>

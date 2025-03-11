@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Filterable Person List</title>
+</head>
+<body>
+    <h1>Person List</h1>
+    <a href="{% url 'insert_rows' %}"><button>Insert Random Data</button></a>
+    
+    <form method="GET">
+        
+        
+        <label for="min_age">Min Age:</label>
+        <input type="number" name="min_age" id="min_age">
+        
+        <label for="max_age">Max Age:</label>
+        <input type="number" name="max_age" id="max_age">
+        
+        
+        
+        <button type="submit">Filter</button>
+    </form>
+    
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+        </tr>
+        {% for person in persons %}
+        <tr>
+            <td>{{ person.name }}</td>
+            <td>{{ person.age }}</td>
+            <td>{{ person.email }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
+ 
